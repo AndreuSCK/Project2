@@ -7,7 +7,7 @@ The MVP will cover the following:
 
 -   Homepage
 -   Working Trivia Quiz
--   Perfil
+-   Profile
 -   Signup
 -   Login
 
