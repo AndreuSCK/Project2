@@ -9,7 +9,7 @@ The MVP will cover the following:
 -   Working Trivia Quiz
 -   Perfil
 -   Signup
--   Login: 
+-   Login
 
 
 ## Backlog
@@ -19,23 +19,6 @@ The MVP will cover the following:
 
 ## Wireframes
 - https://gyazo.com/18b72e649f50aadc409b09e1f4d32166
-
-## Data Structure
-- root/
-  - index.html
-  - dashboard.html
-  - login.html
-  - signup.html
-  - css/
-    - style.css
-  - scripts/
-    - Database.js
-    - Login.js
-    - Signup.js
-    - User.js
-    - Validator.js
-    - weatherApiService.js
-  - img/
 
 ## Links
 - **API**
