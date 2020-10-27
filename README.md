@@ -47,11 +47,3 @@ The MVP will cover the following:
 - **Git**
 
 - [Gihub Repo URL](https://github.com/AndreuSCK/Project2/)
-
-- **Pics**
-- Background pics are from www.unsplash.com
-- Icons from Cumulus Icons по Yannick  https://icon-icons.com/ 
-
-- **Google fonts**
-- Lobster
-- Titillium
