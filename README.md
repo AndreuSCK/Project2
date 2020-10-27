@@ -22,7 +22,7 @@ The MVP will cover the following:
 
 ## Links
 - **API**
-- https://raw.githubusercontent.com/CristinaGaGr/bazinga-server/develop/seed/questions.js
+- https://opentdb.com/
 
 - **Trello**
 - https://trello.com/b/Wv5k0IE3/modulo2
