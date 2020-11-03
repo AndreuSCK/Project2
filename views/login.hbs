@@ -1,4 +1,7 @@
-<h2> Log In </h2>
+<main id="login">
+
+
+<h1> Log In </h1>
 
 {{#if errorMessage}}
   <p class="error-message">
@@ -7,28 +10,25 @@
 {{/if}}
 
 <form action="/login" method="post">
-  <div>
+  
     <label for="email-input"> Email </label>
     <input type="email" name="email" id="email-input"
-      placeholder="e.g., xena@warrior.company">
-  </div>
+      placeholder="   IsabelDiazAyuso@presidenta.es">
 
-  <div>
     <label for="password-input"> Password </label>
     <input type="password" name="password" id="password-input"
-      placeholder="e.g., ••••••••••••">
-  </div>
+      placeholder="    ••••••••••••">
+ 
 
-  <button> Log In </button>
+  <button> Let's Go! </button>
 </form>
 {{#if message}}
   <p class="error-message">
     {{ message }}
   </p>
 {{/if}}
-<p>
-  Don't have an account?
+
   <a href="/signup">
-    Create an account.
+    Don't have an account?
   </a>
-</p>
+</main>

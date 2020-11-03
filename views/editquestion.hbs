@@ -1,33 +1,33 @@
 <main id="addquestionID">
-    <h1>add question</h1>
+    <h1>Edit a Question</h1>
 {{#if errorMessage}}
 <p class="error-message">
     {{ errorMessage }}
 </p>
 {{/if}}
-    <form action="/editquestion/{{singleQuestion._id}}" method="post">
+    <form class='addform' action="/editquestion/{{singleQuestion._id}}" method="post">
         <label>Question:</label>
         <input name="question"  placeholder="Does teruel exist?" value="{{singleQuestion.question}}">
-<br>
+
         <label>Correct Answer</label>
         <input name="correct_answer" placeholder="Nooo" value="{{singleQuestion.correct_answer}}">
-<br>
+
 
         <label>Incorrect Answer</label>
         <input name="incorrectAnswer1" placeholder="Maybe" value="{{singleQuestion.incorrect_answers.[0]}}">
-<br>
+
 
         <label>incorrect Answer</label>
         <input name="incorrectAnswer2" placeholder="You mad bro?" value="{{singleQuestion.incorrect_answers.[1]}}">
-<br>
+
 
         <label>incorrect Answer</label>
         <input name="incorrectAnswer3" placeholder="Definetely yes" value="{{singleQuestion.incorrect_answers.[2]}}">
-<br>
+
         
         <button>Submit </button>
     </form>
-    <button>
+    <button class="deletebttn">
             <a href="/deletequestion/{{singleQuestion._id}}">
         Delete question
             </a>

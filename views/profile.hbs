@@ -1,5 +1,7 @@
+<main id="profile">
+
 <h1>{{currentUserInfo.name}}'s profile</h1>
-<h3>Email: {{currentUserInfo.email}}</h3>
+
 
 
 {{#if updated}}
@@ -8,12 +10,12 @@
 
 
 {{#if userQuestions}}
-<h3>Questions created: </h3>
+<h2>Questions created: </h2>
 
     {{#each userQuestions}}
 
-    <h1> {{updated}}  </h1> 
-    <h1>{{question}}</h1>
+    <h3> {{updated}}  </h3> 
+    <h3>{{question}}</h3>
     <a href="/editquestion/{{_id}}">Edit question</a>
 
     {{/each}}
@@ -21,3 +23,4 @@
 {{/if}}
 
 
+</main>
