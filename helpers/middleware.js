@@ -20,6 +20,11 @@ const withAuth = async (req, res, next) => {
             // esto nos sirve para hacer validaciones en las plantillas de hbs
             res.locals.currentUserInfo = await User.findById(nombreID).select("-password");
             res.locals.isUserLoggedIn = true
+            // console.log(req)
+
+            // if (req.body.difficulty) {
+            //     res.locals.difficultyMIDDLEWARE = req.body.difficulty
+            // }
             next()
         }
     } catch (error) {

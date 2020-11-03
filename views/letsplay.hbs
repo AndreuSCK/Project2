@@ -12,7 +12,49 @@
 
 
 
-<h1>
+<h1 id="preguntasID">
     Question:
-    {{currentQuestions}}
+
+        {{#if currentPregunta}}
+            <h1>{{currentPregunta}}</h1>
+            <button>
+
+            <p id="p1">{{currentRespuesta1}}</p>
+
+            </button> 
+            <button>
+
+            <p id="p2">{{currentRespuesta2}}</p>
+
+            </button>
+            <button>
+
+            <p id="p3">{{currentRespuesta3}}</p>
+
+            </button>
+            <button>
+
+            <p id="p4">{{currentRespuesta4}}</p>
+
+            </button>
+
+            
+        {{/if}}
+        <h1 id="resultadoID" ></h1>
+
+        <a id="nextWinID" >
+        <form action="/letsplay" method="post">
+            <input name="result" value="win">
+            <button >Siguiente pregunta!</button>
+        </form>
+        </a>
+        <a id="nextLostID" >
+            <form action="/letsplay" method="post">
+            <input name="result" value="lost">
+            <button >Siguiente pregunta!</button>
+            </form>
+        </a>
+                {{!-- document.querySelector('#loginSection').style.display = 'none' --}}
+
+    <a href="/">atras</a>
 </h1>

@@ -291,3 +291,10 @@ a {
   margin-top: 40px;
   font-size: 22px;
 }
+
+#nextWinID {
+  display:none
+}
+#nextLostID {
+  display:none
+}
