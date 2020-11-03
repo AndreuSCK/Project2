@@ -37,3 +37,10 @@ a {
 label {
   display:block;
 }
+
+#nextWinID {
+  display:none
+}
+#nextLostID {
+  display:none
+}

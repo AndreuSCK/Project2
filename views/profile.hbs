@@ -6,10 +6,13 @@
 <p>{{updated}}</p>
 {{/if}}
 
+        {{#if difficultyMIDDLEWARE}}
+            <p>{{difficultyMIDDLEWARE}}</p>
+        {{/if}}
 
 {{#if userQuestions}}
 <h3>Questions created: </h3>
-
+    <a href="/">back</a>
     {{#each userQuestions}}
 
     <h1> {{updated}}  </h1> 
