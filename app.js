@@ -12,10 +12,10 @@ const questionsData = require('./seed/questions');
 
 const favicon = require('serve-favicon');
 const mongoose = require('mongoose');
-// https://ih-quizapp.herokuapp.com/
 // `mongodb://localhost/project2`
+// process.env.MONGODB_URI
 mongoose
-  .connect(process.env.MONGODB_URI, {
+  .connect(`mongodb://localhost/project2`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

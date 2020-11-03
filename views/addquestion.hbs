@@ -1,1 +1,35 @@
-<h1>add question</h1>
+<main id="addquestionID">
+    <h1>add question</h1>
+{{#if errorMessage}}
+<p class="error-message">
+    {{ errorMessage }}
+</p>
+{{/if}}
+    <form action="/addquestion" method="post">
+        <label>Question:</label>
+        <input name="question"  placeholder="Does teruel exist?" >
+<br>
+        <label>Correct Answer</label>
+        <input name="correct_answer" placeholder="Nooo">
+<br>
+
+        <label>Incorrect Answer</label>
+        <input name="incorrectAnswer1" placeholder="Maybe">
+<br>
+
+        <label>incorrect Answer</label>
+        <input name="incorrectAnswer2" placeholder="You mad bro?">
+<br>
+
+        <label>incorrect Answer</label>
+        <input name="incorrectAnswer3" placeholder="Definetely yes">
+<br>
+        
+        <button>Submit </button>
+    </form>
+    {{#if message}}
+  <p class="error-message">
+    {{ message }}
+  </p>
+{{/if}}
+</main>

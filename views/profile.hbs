@@ -1,1 +1,23 @@
-<h1>user profile</h1>
+<h1>{{currentUserInfo.name}}'s profile</h1>
+<h3>Email: {{currentUserInfo.email}}</h3>
+
+
+{{#if updated}}
+<p>{{updated}}</p>
+{{/if}}
+
+
+{{#if userQuestions}}
+<h3>Questions created: </h3>
+
+    {{#each userQuestions}}
+
+    <h1> {{updated}}  </h1> 
+    <h1>{{question}}</h1>
+    <a href="/editquestion/{{_id}}">Edit question</a>
+
+    {{/each}}
+
+{{/if}}
+
+
