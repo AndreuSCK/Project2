@@ -1,31 +1,31 @@
 <main id="addquestionID">
-    <h1>add question</h1>
+    <h1>Add a Question!</h1>
 {{#if errorMessage}}
 <p class="error-message">
     {{ errorMessage }}
 </p>
 {{/if}}
-    <form action="/addquestion" method="post">
-        <label>Question:</label>
-        <input name="question"  placeholder="Does teruel exist?" >
+    <form class='addform' action="/addquestion" method="post">
+        <label>Question</label>
+        <input name="question"  placeholder="    Does teruel exist?" >
 <br>
         <label>Correct Answer</label>
-        <input name="correct_answer" placeholder="Nooo">
+        <input name="correct_answer" placeholder="    ¯\_(ツ)_/¯">
 <br>
 
         <label>Incorrect Answer</label>
-        <input name="incorrectAnswer1" placeholder="Maybe">
+        <input name="incorrectAnswer1" placeholder="    Teru what now?">
 <br>
 
-        <label>incorrect Answer</label>
-        <input name="incorrectAnswer2" placeholder="You mad bro?">
+        <label>Incorrect Answer</label>
+        <input name="incorrectAnswer2" placeholder="    You mad bro?">
 <br>
 
-        <label>incorrect Answer</label>
-        <input name="incorrectAnswer3" placeholder="Definetely yes">
+        <label>Incorrect Answer</label>
+        <input name="incorrectAnswer3" placeholder="    Definetely yes!">
 <br>
         
-        <button>Submit </button>
+        <button>Submit! </button>
     </form>
     {{#if message}}
   <p class="error-message">
