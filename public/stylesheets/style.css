@@ -57,11 +57,14 @@ table {
 
 nav {
   height:120px;
-  background-color: #40e0d0ff ;
-  border-bottom: 2px solid grey;
+  
+  background-color: #ff499e;
+  /* background-color: #d175b7; */
+ /*  border-bottom: 2px solid grey; */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width:100%;
   
 }
 
@@ -74,6 +77,7 @@ nav {
   font-size: 32px;
   font-weight: bold;
   color: black;
+  /* color: #ffffff; */
 }
 
 .nav-profile{
@@ -83,10 +87,12 @@ nav {
 
 
 body {
-  height: 100vh;
-  
-    background: linear-gradient(180deg, rgb(238, 118, 169) 0%, #ee76a9ff 75%,rgba(246,189,213,1) 100%); 
+  height: 120vh;
+  background: linear-gradient(180deg, #ff499e 0%,/*  #d175b7 95%, */ #ff65a7 100%);
+  /* background: linear-gradient(180deg, rgb(238, 118, 169) 0%, #ee76a9ff 75%, rgba(246,189,213,1) 100%);  */
+  background-attachment: fixed;
   font-family: 'Grandstander', cursive;
+  /* font-family: 'Raleway', Arial, sans-serif; */
 }
 
 a {
@@ -99,7 +105,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 75%;
+  height: 35%;
 
 }
 #homeID h1 {
@@ -109,12 +115,12 @@ a {
   
 }
 #homeID a {
-  
-  font-size: 70px;
+  margin-top: 60px;
+  font-size: 90px;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
-   
+  padding: 10px 0;
 }
 
 
@@ -156,10 +162,10 @@ a {
 }
 
 .addform button {
-  width: 40%;
+  width: 300px;
   margin-top: 20px;
   font-size: 55px;
-  color: black;
+  
   font-weight: bold;
   display: flex;
   align-self: center;
@@ -167,7 +173,7 @@ a {
   background: none;
   cursor: pointer;
   border: none;
-  padding:0;
+  padding:10px 0;
 }
 
 .deletebttn  {
@@ -193,7 +199,7 @@ a {
   display:flex;
   flex-direction: column;
   align-items: center;
-  height: 80%;
+ 
   
 
 }
@@ -232,10 +238,11 @@ a {
 }
 
 #login button {
-  width: 40%;
+  width: 300px;
+  padding:10px 0;
   margin-top: 40px;
   font-size: 65px;
-  color: black;
+  
   font-weight: bold;
   display: flex;
   align-self: center;
@@ -243,7 +250,7 @@ a {
   background: none;
   cursor: pointer;
   border: none;
-  padding:0;
+  
 }
 
 #login a{
@@ -251,6 +258,7 @@ a {
   margin-right: 10%;
   margin-top: 90px;
   font-size: 22px;
+  padding: 20px 0;
 }
 
 
@@ -292,3 +300,268 @@ a {
   font-size: 22px;
 }
 
+<<<<<<< HEAD
+=======
+#nextWinID {
+  display:none
+}
+#nextLostID {
+  display:none
+}
+
+
+/* PLay Selecet*/
+
+
+#playselect {
+ 
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  
+}
+
+
+#playselect form{
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+#playselect label {
+margin: 30px 0;
+font-size: 60px;
+
+}
+.categorydiv{
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.categorydiv p{
+  display: inline;
+  
+ }
+ .categorydiv2{
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.categorydiv2 p{
+  display: inline;
+  
+ }
+#playselect input{
+  margin: 30px 20px;
+
+}
+
+#playselect button {
+  width: 400px;
+  margin-top: 40px;
+  font-size: 75px;
+ 
+  font-weight: bold;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  background: none;
+  cursor: pointer;
+  border: none;
+  padding:10px 0;
+}
+
+
+@media (max-width: 801px) {
+
+  #login button {
+    margin-top: 40px;
+   width: 80%;
+   font-size:60px
+    
+  }
+
+  
+  #homeID h1 {
+    font-size: 60px;
+    
+    
+  }
+  #homeID a {
+    
+    font-size: 50px;
+   
+     
+  }
+
+  
+
+
+#playselect form{
+font-size: 30px;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 30px;
+width: 90%;
+max-width: 1200px;
+}
+
+#playselect label {
+margin: 30px 0;
+font-size: 40px;
+
+}
+.categorydiv div{
+
+width: 40%;
+
+}
+
+.categorydiv p{
+ display: inline;
+ font-size: 17px;
+}
+
+.categorydiv2{
+  width: 100%;
+}
+.categorydiv2 div{
+
+  width: 30%;
+  margin: 0;
+  padding: 0;
+  }
+  
+  .categorydiv2 p{
+   display: inline;
+   font-size: 17px;
+  }
+  
+#playselect input{
+margin: 30px 20px;
+
+}
+
+#playselect button {
+
+font-size: 50px;
+
+}
+
+.nav-back{
+
+  padding:15px;
+}
+.nav-profile{
+  padding: 15px;
+}
+
+}
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+
+.snip1217 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+
+.snip1217 a {
+  
+  color: rgba(0, 0, 0,0.6);
+ /*  color: rgba(255, 255, 255, 0.5); */
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+}
+.snip1217 button {
+  
+  color: rgba(0, 0, 0,0.6);
+ /*  color: rgba(255, 255, 255, 0.5); */
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+}
+.snip1217 a:before,
+.snip1217 a:after {
+  height: 3px;
+  position: absolute;
+  content: '';
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  /* background-color: #40e0d0ff; */
+  background-color: #4bc3b5;
+  width: 0;
+}
+.snip1217 button:before,
+.snip1217 button:after {
+  height: 3px;
+  position: absolute;
+  content: '';
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  /* background-color: #40e0d0ff; */
+  background-color: #4bc3b5;
+  width: 0;
+}
+.snip1217 a:before {
+  top: 0;
+  left: 0;
+}
+.snip1217 button:before {
+  top: 0;
+  left: 0;
+}
+.snip1217 a:after {
+  bottom: 0;
+  right: 0;
+}
+.snip1217 button:after {
+  bottom: 0;
+  right: 0;
+}
+.snip1217 a:hover,
+.snip1217 .current a {
+  color: rgb(0,0,0);
+ /*  color: #ffffff; */
+}
+
+.snip1217 button:hover,
+.snip1217 .current button {
+  color: rgb(0,0,0);
+  /* color: #ffffff; */
+}
+.snip1217 a:hover:before,
+.snip1217 .current a:before,
+.snip1217 a:hover:after,
+.snip1217 .current a:after {
+  width: 100%;
+}
+
+.snip1217 button:hover:before,
+.snip1217 .current button:before,
+.snip1217 button:hover:after,
+.snip1217 .current button:after {
+  width: 100%;
+}
+
+
+
+>>>>>>> 04fce510760cb1ebc8e46aae1c6a2de45b370a52

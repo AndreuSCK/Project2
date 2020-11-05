@@ -1,7 +1,5 @@
-<main id="login">
+<main id="login" class="snip1217">
 
-
-<h1> Log In </h1>
 
 {{#if errorMessage}}
   <p class="error-message">
@@ -9,7 +7,7 @@
   </p>
 {{/if}}
 
-<form action="/login" method="post">
+<form id="formId" action="/login" method="post">
   
     <label for="email-input"> Email </label>
     <input type="email" name="email" id="email-input"
@@ -20,7 +18,7 @@
       placeholder="    ••••••••••••">
  
 
-  <button> Let's Go! </button>
+  <button id="boton" onclick="play()"> Log In! </button>
 </form>
 {{#if message}}
   <p class="error-message">
@@ -28,7 +26,7 @@
   </p>
 {{/if}}
 
-  <a href="/signup">
+  <a href="/signup" class="enlace" onclick="play()">
     Don't have an account?
   </a>
 </main>

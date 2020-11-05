@@ -8,10 +8,7 @@
 <p>{{updated}}</p>
 {{/if}}
 
-        {{#if difficultyMIDDLEWARE}}
-            <p>{{difficultyMIDDLEWARE}}</p>
-        {{/if}}
-
+       
 {{#if userQuestions}}
 <h2>Questions created: </h2>
 
@@ -19,7 +16,7 @@
 
     <h3> {{updated}}  </h3> 
     <h3>{{question}}</h3>
-    <a href="/editquestion/{{_id}}">Edit question</a>
+    <a href="/editquestion/{{_id}}" class="enlace" onclick="play()">Edit question</a>
 
     {{/each}}
 

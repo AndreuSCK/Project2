@@ -1,11 +1,11 @@
-<main id="addquestionID">
+<main id="addquestionID" class="snip1217">
     <h1>Add a Question!</h1>
 {{#if errorMessage}}
 <p class="error-message">
     {{ errorMessage }}
 </p>
 {{/if}}
-    <form class='addform' action="/addquestion" method="post">
+    <form id="formId" class='addform' action="/addquestion" method="post">
         <label>Question</label>
         <input name="question"  placeholder="    Does teruel exist?" >
 <br>
@@ -25,7 +25,7 @@
         <input name="incorrectAnswer3" placeholder="    Definetely yes!">
 <br>
         
-        <button>Submit! </button>
+        <button id="boton" onclick="play()" >Submit! </button>
     </form>
     {{#if message}}
   <p class="error-message">
@@ -33,3 +33,4 @@
   </p>
 {{/if}}
 </main>
+

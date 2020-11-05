@@ -74,3 +74,17 @@ if (tableAfter) {
     }
 }
 
+<<<<<<< HEAD
+=======
+if (document.querySelector('#p4')) {
+    document.querySelector('#p4').addEventListener('click', (e) => {
+        e.preventDefault()
+        activeButton("p4")
+    })
+}
+
+
+
+
+    
+>>>>>>> 04fce510760cb1ebc8e46aae1c6a2de45b370a52
