@@ -5,7 +5,7 @@
     {{ errorMessage }}
 </p>
 {{/if}}
-    <form class='addform' action="/editquestion/{{singleQuestion._id}}" method="post">
+    <form id="formId" class='addform' action="/editquestion/{{singleQuestion._id}}" method="post">
         <label>Question:</label>
         <input name="question"  placeholder="Does teruel exist?" value="{{singleQuestion.question}}">
 
@@ -25,10 +25,10 @@
         <input name="incorrectAnswer3" placeholder="Definetely yes" value="{{singleQuestion.incorrect_answers.[2]}}">
 
         
-        <button>Submit </button>
+        <button id="boton" onclick="play()">Submit </button>
     </form>
     <button class="deletebttn">
-            <a href="/deletequestion/{{singleQuestion._id}}">
+            <a href="/deletequestion/{{singleQuestion._id}}" class="enlace" onclick="play()">
         Delete question
             </a>
     </button>
