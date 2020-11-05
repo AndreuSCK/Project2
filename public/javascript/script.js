@@ -31,7 +31,7 @@ const idAnswersTable = document.querySelector("#preguntasID");
 
 const activeButton = (buttonSelected) => {
     if (buttonSelected === "p1") {
-        document.querySelector("#resultadoID").innerHTML = "ACERTASTE!!!!"
+       /*  document.querySelector("#resultadoID").innerHTML = "NOICE!" */
         document.querySelector('#nextWinID').style.display = 'block'
         document.querySelector("#p1").style.backgroundColor = "green"
 
@@ -39,9 +39,11 @@ const activeButton = (buttonSelected) => {
     }
     else {
 
-        document.querySelector("#resultadoID").innerHTML = "NO ES LA CORRECTA!!!!"
+       /*  document.querySelector("#resultadoID").innerHTML = "WRONG!" */
         document.querySelector('#nextLostID').style.display = 'block'
         document.querySelector(`#${buttonSelected}`).style.backgroundColor = "red"
+        document.querySelector("#p1").style.backgroundColor = "green"
+
     }
 }
 

@@ -1,7 +1,7 @@
 
 
 
-<main id="letsPlayID">
+<main id="letsPlayID" class="snip1217">
 
         {{#if currentPregunta}}
             <h1 id="preguntaID">{{{currentPregunta}}}</h1>
@@ -31,15 +31,15 @@
 
         <div id="nextWinID" >
         <form action="/letsplay" method="post">
-            <input id="inputValueID" name="result" value="win">
-            <button >Siguiente pregunta!</button>
+            <input id="inputValueID" name="result" value="win" style="display: none;">
+            <button onclick="play()" >Next!</button>
         </form>
         </div>
 
-        <div id="nextLostID" >
+        <div id="nextLostID">
             <form action="/letsplay" method="post">
-            <input name="result" value="lost">
-            <button >Siguiente pregunta!</button>
+            <input name="result" value="lost" style="display: none;"> 
+            <button onclick="play()" >Next!</button>
             </form>
         </div>
 

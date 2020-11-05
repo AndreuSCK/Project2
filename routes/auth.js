@@ -94,8 +94,8 @@ router.get('/play', withAuth, (req, res, next) => {
 })
 router.post('/play', withAuth, async (req, res, next) => {
 
-    const { category, difficulty, numberOfQuestions } = req.body
-    const settings = { category, difficulty, numberOfQuestions: Number(numberOfQuestions) }
+    const { category, difficulty} = req.body
+    const settings = {category, difficulty}
     let mongoResponse = []
     try {
         if (category === "all") {
@@ -112,7 +112,7 @@ router.post('/play', withAuth, async (req, res, next) => {
     let arrayOfQuestionsID = []
 
     try {
-        for (i = 0; i < numberOfQuestions; i++) {
+        for (i = 0; i < 10; i++) {
             console.log(i)
             let randomPosition = Math.round(Math.random() * mongoResponseLength)
 
@@ -148,7 +148,7 @@ router.get('/letsplay', withAuth, async (req, res, next) => {
         // return res.send(username);
         let jajapregunta = await DBQuestions.find({ _id: JSON.parse(userdata.questions)[userdata.currentQuestionNumber] });
         console.log(jajapregunta)
-        res.locals.currentPregunta = `${jajapregunta[0].question} ... Usuario con puntos${userdata.puntos}`
+        res.locals.currentPregunta = `${jajapregunta[0].question}`
         res.locals.currentRespuesta1 = `${jajapregunta[0].correct_answer}`
 
         res.locals.currentRespuesta2 = `${jajapregunta[0].incorrect_answers[0]}`
@@ -195,7 +195,7 @@ router.post('/letsplay', withAuth, async (req, res, next) => {
         // return res.send(username);
         let jajapregunta = await DBQuestions.find({ _id: JSON.parse(newCookies.questions)[newCookies.currentQuestionNumber] });
         console.log(jajapregunta)
-        res.locals.currentPregunta = `${jajapregunta[0].question} ... Usuario con puntos${newCookies.puntos}`
+        res.locals.currentPregunta = `${jajapregunta[0].question}`
         res.locals.currentRespuesta1 = `${jajapregunta[0].correct_answer}`
         res.locals.currentRespuesta2 = `${jajapregunta[0].incorrect_answers[0]}`
         res.locals.currentRespuesta3 = `${jajapregunta[0].incorrect_answers[1]}`
