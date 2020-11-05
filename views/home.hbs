@@ -1,7 +1,5 @@
-<main id="homeID">
-    <h1>
-        Hello {{currentUserInfo.name}}
-    </h1>
+<main id="homeID" class="snip1217">
+    
     <a href="/play">
         Let's Roll!
     </a>
@@ -9,7 +7,18 @@
         Custom Play
     </a>
   
-    <a href="/addquestion">
+    <a  href="/addquestion" onclick="play()" >
         Add a Question
     </a>
 </main>
+
+
+<script>
+      function play() {
+        var audio = document.getElementById("audio");
+        audio.play();
+      }
+    </script>
+
+<input type="button" value="PLAY" onclick="play()">
+<audio id="audio" src="images\bambu_1.mp3"></audio>

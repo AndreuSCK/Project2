@@ -1,43 +1,42 @@
 
-<main id="addquestionID">
-<h1> Play</h1>
+<main id="playselect" class="snip1217">
+
 <form action="/play" method="post">
-    <label>Choose Category</label>
-    <input class="inline" type="radio" name="category" value="all"> All
-    <input class="inline" type="radio" name="category" value="Entertainment: Books"> Books
-    <input class="inline" type="radio" name="category" value="Entertainment: Film"> Films
-    <input class="inline" type="radio" name="category" value="Entertainment: Music"> Music
-    <input class="inline" type="radio" name="category" value="Entertainment: Television"> Tv
-    <input class="inline" type="radio" name="category" value="Entertainment: Video Games"> Videogames
-    <input class="inline" type="radio" name="category" value="Science & Nature"> Science & Nature
-    <input class="inline" type="radio" name="category" value="Geography"> Geography
-    <label></label>
-    <input class="inline" type="radio" name="category" value="Sports"> Sports
-    <input class="inline" type="radio" name="category" value="History"> History
-    <input class="inline" type="radio" name="category" value="Mythology"> Mythology
-    <input class="inline" type="radio" name="category" value="Entertainment: Japanese Anime & Manga"> Anime & Manga
-    <input class="inline" type="radio" name="category" value="Science: Computers"> Computers
-    <input class="inline" type="radio" name="category" value="Science: Mathematics"> Mathematics
-    <input class="inline" type="radio" name="category" value="Vehicles"> Vehicles
+   <label>Choose a Category</label>
+<div class="categorydiv">
+ 
 
+   <div> <input class="inline" type="radio" name="category" value="all"> <p>All</p></div>
+   <div> <input class="inline" type="radio" name="category" value="Entertainment: Books"> <p>Books</p></div>
+   <div> <input class="inline" type="radio" name="category" value="Entertainment: Film"> <p>Films</p></div>
+   <div> <input class="inline" type="radio" name="category" value="Entertainment: Music"> <p>Music</p></div>
+   <div> <input class="inline" type="radio" name="category" value="Entertainment: Television"><p> Tv</p></div>
+   <div><input class="inline" type="radio" name="category" value="Entertainment: Video Games"> <p>Videogames</p></div>
+  <div>  <input class="inline" type="radio" name="category" value="Science & Nature"> <p>Science </p></div>
+   <div> <input class="inline" type="radio" name="category" value="Geography"> <p>Geography</p></div>
+   <div> <input class="inline" type="radio" name="category" value="Sports"> <p>Sports</p></div>
+   <div> <input class="inline" type="radio" name="category" value="History"> <p>History</p></div>
+  <div>  <input class="inline" type="radio" name="category" value="Mythology"> <p>Mythology</p></div>
+  <div>  <input class="inline" type="radio" name="category" value="Entertainment: Japanese Anime & Manga"> <p>Anime </p></div>
+   <div> <input class="inline" type="radio" name="category" value="Science: Computers"> <p>Computers</p></div>
+  <div>  <input class="inline" type="radio" name="category" value="Science: Mathematics"> <p>Mathematics</p></div>
+    <div><input class="inline" type="radio" name="category" value="Vehicles"><p> Vehicles</p></div>
+</div>
+
+<label>Choose a Difficulty</label>
+<div class="categorydiv2" >
     
-
+   <div> <input class="inline" type="radio" name="difficulty" value="easy"> <p>Easy</p></div> 
+   <div> <input class="inline" type="radio" name="difficulty" value="medium"> <p>Medium</p></div> 
+   <div><input class="inline" type="radio" name="difficulty" value="hard"> <p>Hard</p></div> 
+</div>
+<label>How many questions?</label>
+<div class="categorydiv2" >
     
-
-
-
-
-
-    <label>Difficulty</label>
-    <input class="inline" type="radio" name="difficulty" value="easy"> Easy
-    <input class="inline" type="radio" name="difficulty" value="medium"> Medium
-    <input class="inline" type="radio" name="difficulty" value="hard"> Hard
-
-    <label>Number of questions?</label>
-    <input class="inline" type="radio" name="numberOfQuestions" value="10"> 10
-    <input class="inline" type="radio" name="numberOfQuestions" value="15"> 15
-    <input class="inline" type="radio" name="numberOfQuestions" value="15"> 20
-    
-    <button>Play!</button>
+   <div> <input class="inline" type="radio" name="numberOfQuestions" value="10"> <p>10</p></div>
+    <div> <input class="inline" type="radio" name="numberOfQuestions" value="15"> <p>15</p></div>
+    <div> <input class="inline" type="radio" name="numberOfQuestions" value="15"> <p>20</p></div>
+ </div>   
+    <button>Let's Play!</button>
 </form>
 </main>
