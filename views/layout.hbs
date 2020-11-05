@@ -1,25 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}}</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Grandstander&display=swap" rel="stylesheet">
 
+<head>
+  <title>{{title}}</title>
 
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <nav>
-      <a href="/.."><img class="nav-back" src="images\back-button-icon-6.jpg" alt="back"></a>
-      <a class="navname" href="/">Tri What Now?</a>
-      <a href="/profile"><img class="nav-profile" src="images\64495.png" alt="profile"></a>
-     
-    </nav>
-    
-    {{{body}}}
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Grandstander&display=swap"
+    rel="stylesheet">
 
-    <script src="javascript/script.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
 
-  </body>
+<body>
+  <nav>
+    <a href="/.."class="enlace" onclick="play()"><img class="nav-back"  src="images\back-button-icon-6.jpg" alt="back"></a>
+    <a class="navname" class="enlace" onclick="play()" href="/">TriWhatNow?</a>
+    <a href="/profile" class="enlace" onclick="play()"><img class="nav-profile"  src="images\64495.png" alt="profile"></a>
+
+  </nav>
+
+  {{{body}}}
+ 
+  <audio id="audio" src="images\zapsplat_multimedia_button_click_007_53868.mp3"></audio>
+
+  <script src="javascript/script.js"></script>
+
+  <script>
+    function play() {
+      var audio = document.getElementById("audio");
+      audio.play();
+    }
+
+    window.onload = function () {
+      document.querySelectorAll('.enlace').forEach(item => {
+        item.addEventListener('click', event => {
+          event.preventDefault(); //esto cancela el comportamiento del click
+          setTimeout(function (url) { window.location = item.href }, 450);
+        })
+      })
+
+      if(document.body.contains(document.getElementById('boton'))){
+        document.getElementById('boton').addEventListener('click', event => {
+          event.preventDefault(); //esto cancela el comportamiento del click
+          setTimeout(function () {document.getElementById('formId').submit()
+}, 1000);
+        })
+      
+    } 
+    };
+
+  </script>
+
+</body>
+
 </html>
