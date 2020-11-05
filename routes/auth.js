@@ -98,7 +98,11 @@ router.post('/play', withAuth, async (req, res, next) => {
     const settings = { category, difficulty, numberOfQuestions: Number(numberOfQuestions) }
     let mongoResponse = []
     try {
-        mongoResponse = await DBQuestions.find({ difficulty: difficulty, category: category });
+        if (category === "all") {
+            mongoResponse = await DBQuestions.find({ difficulty: difficulty, type: "multiple" });
+        } else {
+            mongoResponse = await DBQuestions.find({ difficulty: difficulty, category: category, type: "multiple" });
+        }
     } catch (error) {
         console.log(error)
     }
@@ -111,43 +115,28 @@ router.post('/play', withAuth, async (req, res, next) => {
         for (i = 0; i < numberOfQuestions; i++) {
             console.log(i)
             let randomPosition = Math.round(Math.random() * mongoResponseLength)
-            // arrayOfQuestions.push(mongoResponse[randomPosition])
-            console.log("respuesta mongo" + mongoResponseLength)
-            console.log("random: " + randomPosition)
-            console.log(mongoResponse[randomPosition])
+
             arrayOfQuestionsID.push(await mongoResponse[randomPosition]._id)
         }
     } catch (error) {
         console.log(error)
     }
 
-    // for (i = 0; i < numberOfQuestions; i++) {
-    //     let randomPosition = Math.round(Math.random() * mongoResponseLength + 1)
-    //     arrayOfQuestions.push(randomPosition)
-    // }
-    // console.log(arrayOfQuestions[0].question)
-    // console.log(arrayOfQuestions.length)
-
-
-    // res.render('letsplay', settings)
-    // console.log(arrayOfQuestionsID)
 
     let questionCookie = JSON.stringify(arrayOfQuestionsID)
-    // console.log(questionCookie)
+
 
     let playerInfo = {
         questions: questionCookie,
-        currentQuestionNumber: 1,
+        currentQuestionNumber: 0,
         puntos: 0,
     }
     res.cookie("userData", playerInfo);
 
 
 
-
-    // res.render('letsplay', arrayOfQuestions)
     res.redirect('/letsplay')
-    // res.redirect('/letsplay')
+
 })
 
 
@@ -161,9 +150,14 @@ router.get('/letsplay', withAuth, async (req, res, next) => {
         console.log(jajapregunta)
         res.locals.currentPregunta = `${jajapregunta[0].question} ... Usuario con puntos${userdata.puntos}`
         res.locals.currentRespuesta1 = `${jajapregunta[0].correct_answer}`
+
         res.locals.currentRespuesta2 = `${jajapregunta[0].incorrect_answers[0]}`
         res.locals.currentRespuesta3 = `${jajapregunta[0].incorrect_answers[1]}`
         res.locals.currentRespuesta4 = `${jajapregunta[0].incorrect_answers[2]}`
+
+
+
+
     }
     res.render('letsplay')
 })
@@ -172,6 +166,7 @@ router.get('/letsplay', withAuth, async (req, res, next) => {
 
 router.post('/letsplay', withAuth, async (req, res, next) => {
 
+
     const { result } = req.body
     let currentPuntos = 0
     if (result === "win") {
@@ -179,15 +174,12 @@ router.post('/letsplay', withAuth, async (req, res, next) => {
     }
 
 
-    // let playerInfo = {
-    //     // questions: questions,
-    //     currentQuestionNumber: currentQuestionNumber + 1,
-    //     puntos: puntos + currentPuntos,
-    // }
-    // res.cookie("userData", playerInfo);
-
     let userdata = req.cookies['userData'];
 
+
+    // console.log(JSON.parse(userdata.questions).length)
+
+    console.log(userdata.currentQuestionNumber)
     let newCookies = {
         questions: userdata.questions,
         currentQuestionNumber: userdata.currentQuestionNumber + 1,
@@ -195,7 +187,9 @@ router.post('/letsplay', withAuth, async (req, res, next) => {
     }
     res.cookie("userData", newCookies);
 
-
+    if (newCookies.currentQuestionNumber >= JSON.parse(userdata.questions).length) {
+        res.redirect('results')
+    }
 
     if (userdata) {
         // return res.send(username);
@@ -210,7 +204,9 @@ router.post('/letsplay', withAuth, async (req, res, next) => {
     res.render('letsplay')
 })
 
-
+router.get('/results', withAuth, async (req, res, next) => {
+    res.render('results')
+})
 router.get('/profile', withAuth, async (req, res, next) => {
     const questionsCreatedByUser = await CustomQuestions.find({ author: res.locals.currentUserInfo._id });
     // console.log(questionsCreatedByUser)

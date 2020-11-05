@@ -1,60 +1,49 @@
-<h1>
-    {{!-- {{category}} --}}
-</h1>
-<h2>prueba</h2>
-<h2>
-    {{!-- {{difficulty}} --}}
-
-</h2>
-<h2>
-{{!-- {{arrayOfQuestions.[0]}} --}}
-</h2>
 
 
 
-<h1 id="preguntasID">
-    Question:
+<main id="letsPlayID">
 
         {{#if currentPregunta}}
-            <h1>{{currentPregunta}}</h1>
-            <button>
+            <h1 id="preguntaID">{{{currentPregunta}}}</h1>
+            <div id="tablaPreguntasID">
 
-            <p id="p1">{{currentRespuesta1}}</p>
+                <div id="p1" style="display: none;">
+                <p>{{{currentRespuesta1}}}</p>
+                 </div> 
+                 <div id="p2" style="display: none;">
+                 <p >{{{currentRespuesta2}}}</p>
+                 </div>
+                 <div id="p3" style="display: none;">
+                 <p >{{{currentRespuesta3}}}</p>
+                 </div>
+                 <div id="p4" style="display: none;">
+                 <p >{{{currentRespuesta4}}}</p>
+                </div>
+            </div>
+            <div id="tablaPreguntasIDafter">
 
-            </button> 
-            <button>
-
-            <p id="p2">{{currentRespuesta2}}</p>
-
-            </button>
-            <button>
-
-            <p id="p3">{{currentRespuesta3}}</p>
-
-            </button>
-            <button>
-
-            <p id="p4">{{currentRespuesta4}}</p>
-
-            </button>
-
+            </div>
             
         {{/if}}
+
+
         <h1 id="resultadoID" ></h1>
 
-        <a id="nextWinID" >
+        <div id="nextWinID" >
         <form action="/letsplay" method="post">
-            <input name="result" value="win">
+            <input id="inputValueID" name="result" value="win">
             <button >Siguiente pregunta!</button>
         </form>
-        </a>
-        <a id="nextLostID" >
+        </div>
+
+        <div id="nextLostID" >
             <form action="/letsplay" method="post">
             <input name="result" value="lost">
             <button >Siguiente pregunta!</button>
             </form>
-        </a>
-                {{!-- document.querySelector('#loginSection').style.display = 'none' --}}
+        </div>
 
-    <a href="/">atras</a>
-</h1>
+    {{!-- <a href="/">atras</a> --}}
+</main>
+
+
