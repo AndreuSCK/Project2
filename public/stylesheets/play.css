@@ -3,9 +3,9 @@
     flex-direction: column;
     align-items: center;
 }
-#letsPlayID  #preguntaID {
+#preguntaID {
     text-align: center;
-    max-width: 90%;
+    width: 60%;
     font-size: 60px;
 }
 

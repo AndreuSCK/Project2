@@ -562,3 +562,75 @@ font-size: 50px;
 
 
 
+#letsPlayID {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+#preguntaID {
+  align-content: center;
+  text-align: center;
+  width: 60%;
+  font-size: 32px;
+}
+
+#tablaPreguntasIDafter{
+  margin-top: 50px;
+  width: 90%;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#tablaPreguntasIDafter div{
+  width: 40%;
+  align-content: center;
+  text-align: center;
+  padding: 40px 0;
+  margin: 10px;
+  background-color: rgba(75, 195, 181, 0.9);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+#tablaPreguntasIDafter div p{
+  font-size: 28px;
+}
+
+
+
+#nextWinID button {
+  width: 400px;
+  margin-top: 20px;
+  font-size: 75px;
+ 
+  font-weight: bold;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  background: none;
+  cursor: pointer;
+  border: none;
+  padding:10px 0;
+}
+
+#profile a{
+  padding: 10px 0;
+}
+
+#nextLostID button {
+  width: 400px;
+  margin-top: 50px;
+  font-size: 75px;
+
+  font-weight: bold;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  background: none;
+  cursor: pointer;
+  border: none;
+  padding:10px 0;
+}
