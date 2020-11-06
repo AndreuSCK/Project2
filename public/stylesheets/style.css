@@ -93,7 +93,7 @@ body {
   /* background: linear-gradient(180deg, rgb(238, 118, 169) 0%, #ee76a9ff 75%, rgba(246,189,213,1) 100%);  */
   background-attachment: fixed;
   font-family: 'Grandstander', cursive;
-  /* font-family: 'Raleway', Arial, sans-serif; */
+ 
 }
 
 a {
@@ -111,12 +111,12 @@ a {
 }
 #homeID h1 {
   font-size: 90px;
-  margin: 60px 0 15px 0;
+  margin: 40px 0 15px 0;
   font-weight: bolder;
   
 }
 #homeID a {
-  margin-top: 60px;
+  margin-top: 30px;
   font-size: 90px;
   font-weight: bold;
   text-align: center;
@@ -384,94 +384,6 @@ font-size: 60px;
 }
 
 
-@media (max-width: 801px) {
-
-  #login button {
-    margin-top: 40px;
-   width: 80%;
-   font-size:60px
-    
-  }
-
-  
-  #homeID h1 {
-    font-size: 60px;
-    
-    
-  }
-  #homeID a {
-    
-    font-size: 50px;
-   
-     
-  }
-
-  
-
-
-#playselect form{
-font-size: 30px;
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 30px;
-width: 90%;
-max-width: 1200px;
-}
-
-#playselect label {
-margin: 30px 0;
-font-size: 40px;
-
-}
-.categorydiv div{
-
-width: 40%;
-
-}
-
-.categorydiv p{
- display: inline;
- font-size: 17px;
-}
-
-.categorydiv2{
-  width: 100%;
-}
-.categorydiv2 div{
-
-  width: 30%;
-  margin: 0;
-  padding: 0;
-  }
-  
-  .categorydiv2 p{
-   display: inline;
-   font-size: 17px;
-  }
-  
-#playselect input{
-margin: 30px 20px;
-
-}
-
-#playselect button {
-
-font-size: 50px;
-
-}
-
-.nav-back{
-
-  padding:15px;
-  padding-left: 0px;
-}
-.nav-profile{
-  padding: 15px;
-}
-
-}
-
 
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
@@ -575,6 +487,8 @@ font-size: 50px;
   text-align: center;
   width: 60%;
   font-size: 32px;
+  
+    font-weight: bold;
 }
 
 #tablaPreguntasIDafter{
@@ -595,6 +509,8 @@ font-size: 50px;
   background-color: rgba(75, 195, 181, 0.9);
   border-radius: 50px;
   cursor: pointer;
+  box-shadow: 3px 3px #000000a3;
+
 }
 
 #tablaPreguntasIDafter div p{
@@ -635,4 +551,153 @@ font-size: 50px;
   cursor: pointer;
   border: none;
   padding:10px 0;
+}
+
+#profile h3 {
+  color: rgba(255, 255, 255, 0.945);
+  text-shadow: 3px 3px rgba(0, 0, 0, 0.45);
+
+}
+
+
+@media (max-width: 801px) {
+  #tablaPreguntasIDafter{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #tablaPreguntasIDafter div{
+    width: 90%;
+    padding: 15px 0;
+  }
+  #preguntaID{
+    width: 90%;
+    
+  }
+  #profile h1{
+    font-size: 40px;
+    
+  }
+  #profile h3{
+    font-size: 22px;
+    width:90%;
+    text-align: center;
+  }
+  #login button {
+    margin-top: 40px;
+   width: 80%;
+   font-size:60px
+    
+  }
+
+  
+  #homeID h1 {
+    font-size: 60px;
+    
+    
+  }
+  #homeID a {
+    
+    font-size: 50px;
+    margin-top:60px;
+     
+  }
+
+  
+#nextWinID button {
+ 
+  margin-top: 20px;
+  font-size: 60px;
+}
+  
+#nextLostID button {
+ 
+  margin-top: 20px;
+  font-size: 60px;
+}
+
+#resultsCategoryMode{
+  font-size: 26px;
+}
+
+#resultBotonForm{
+  font-size: 45px;
+  
+}
+#resultsLinks a{
+  font-size:45px;
+  margin-top: 30px;
+}
+
+#resultsGreatPlay{
+  margin-top: 20px;
+}
+
+#playselect form{
+font-size: 30px;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 30px;
+width: 90%;
+max-width: 1200px;
+}
+
+#playselect label {
+margin: 30px 0;
+font-size: 40px;
+
+}
+.categorydiv div{
+
+width: 40%;
+
+}
+
+.categorydiv p{
+ display: inline;
+ font-size: 17px;
+}
+
+.categorydiv2{
+  width: 100%;
+}
+.categorydiv2 div{
+
+  width: 30%;
+  margin: 0;
+  padding: 0;
+  }
+  
+  .categorydiv2 p{
+   display: inline;
+   font-size: 17px;
+  }
+  
+#playselect input{
+margin: 30px 20px;
+
+}
+
+#playselect button {
+
+font-size: 50px;
+
+}
+
+.nav-back{
+
+  padding:15px;
+  padding-left: 0px;
+}
+.nav-profile{
+  padding: 15px;
+}
+
+#formId input{
+  width:80%;
+}
+
 }
