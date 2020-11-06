@@ -2,35 +2,68 @@
 <main id="playselect" class="snip1217">
 
 <form id="formId" action="/play" method="post">
-   <label>Choose a Category</label>
-<div class="categorydiv">
+   <label >Choose a Category</label>
+<div class="categorydiv" id="labelsForm">
  
 
-   <div> <input class="inline" type="radio" name="category" value="all"> <p>All</p></div>
-   <div> <input class="inline" type="radio" name="category" value="Entertainment: Books"> <p>Books</p></div>
-   <div> <input class="inline" type="radio" name="category" value="Entertainment: Film"> <p>Films</p></div>
-   <div> <input class="inline" type="radio" name="category" value="Entertainment: Music"> <p>Music</p></div>
-   <div> <input class="inline" type="radio" name="category" value="Entertainment: Television"><p> Tv</p></div>
-   <div><input class="inline" type="radio" name="category" value="Entertainment: Video Games"> <p>Videogames</p></div>
-  <div>  <input class="inline" type="radio" name="category" value="Science & Nature"> <p>Science </p></div>
-   <div> <input class="inline" type="radio" name="category" value="Geography"> <p>Geography</p></div>
-   <div> <input class="inline" type="radio" name="category" value="Sports"> <p>Sports</p></div>
-   <div> <input class="inline" type="radio" name="category" value="History"> <p>History</p></div>
-  <div>  <input class="inline" type="radio" name="category" value="Mythology"> <p>Mythology</p></div>
-  <div>  <input class="inline" type="radio" name="category" value="Entertainment: Japanese Anime & Manga"> <p>Anime </p></div>
-   <div> <input class="inline" type="radio" name="category" value="Science: Computers"> <p>Computers</p></div>
-  <div>  <input class="inline" type="radio" name="category" value="Science: Mathematics"> <p>Mathematics</p></div>
-    <div><input class="inline" type="radio" name="category" value="Vehicles"><p> Vehicles</p></div>
+
+
+   <div> <input id="category1" style="display: none;" class="inline" type="radio" name="category" value="all" checked> <label for="category1">All</label></div>
+   <div> <input id="category2" style="display: none;" class="inline" type="radio" name="category" value="Entertainment: Books"> <label for="category2">Books</label></div>
+   <div> <input id="category3" style="display: none;" class="inline" type="radio" name="category" value="Entertainment: Film"> <label for="category3">Films</label></div>
+   <div> <input id="category4" style="display: none;" class="inline" type="radio" name="category" value="Entertainment: Music"> <label for="category4">Music</label></div>
+   <div> <input id="category5" style="display: none;" class="inline" type="radio" name="category" value="Entertainment: Television"><label for="category5"> Tv</label></div>
+   <div><input id="category6" style="display: none;" class="inline" type="radio" name="category" value="Entertainment: Video Games"> <label for="category6">Videogames</label></div>
+  <div>  <input id="category7" style="display: none;" class="inline" type="radio" name="category" value="Science & Nature"> <label for="category7">Science </label></div>
+   <div> <input id="category8" style="display: none;" class="inline" type="radio" name="category" value="Geography"> <label for="category8">Geography</label></div>
+   <div> <input id="category9" style="display: none;" class="inline" type="radio" name="category" value="Sports"> <label for="category9">Sports</label></div>
+   <div> <input id="category10" style="display: none;" class="inline" type="radio" name="category" value="History"> <label for="category10">History</label></div>
+  <div>  <input id="category11" style="display: none;" class="inline" type="radio" name="category" value="Mythology"> <label for="category11">Mythology</label></div>
+  <div>  <input id="category12" style="display: none;" class="inline" type="radio" name="category" value="Entertainment: Japanese Anime & Manga"> <label for="category12">Anime </label></div>
+   <div> <input id="category13" style="display: none;" class="inline" type="radio" name="category" value="Science: Computers"> <label for="category13">Computers</label></div>
+  <div>  <input id="category14" style="display: none;" class="inline" type="radio" name="category" value="Science: Mathematics"> <label for="category14">Mathematics</label></div>
+    <div><input id="category15" style="display: none;" class="inline" type="radio" name="category" value="Vehicles"><label for="category15"> Vehicles</label></div>
 </div>
 
 <label>Choose a Difficulty</label>
-<div class="categorydiv2" >
+<div class="categorydiv2" id="labelsForm">
     
-   <div> <input class="inline" type="radio" name="difficulty" value="easy"> <p>Easy</p></div> 
-   <div> <input class="inline" type="radio" name="difficulty" value="medium"> <p>Medium</p></div> 
-   <div><input class="inline" type="radio" name="difficulty" value="hard"> <p>Hard</p></div> 
+   <div> <input  id="playSelectOptionEasy" style="display: none;" class="inline" type="radio" name="difficulty" value="easy"> <label for="playSelectOptionEasy">Easy</label></div> 
+   <div> <input checked id="playSelectOptionMedium"style="display: none;" class="inline" type="radio" name="difficulty" value="medium"> <label for="playSelectOptionMedium">Medium</label></div> 
+   <div><input id="playSelectOptionHard" style="display: none;" class="inline" type="radio" name="difficulty" value="hard"> <label for="playSelectOptionHard">Hard</label></div> 
 </div>
 
     <button id="boton" onclick="play()" >Let's Play!</button>
 </form>
 </main>
+
+<style>
+   #labelsForm label{
+      cursor: pointer;
+      font-size: 35px;
+      margin: 45px 15px;
+      line-height: 50px;
+   }
+   #labelsForm  label:hover {
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.75);
+   }
+   #labelsForm input[type="radio"]:checked+label {   
+         color: rgba(255, 255, 255, 0.75);
+   }
+
+@media (max-width: 801px) {
+   #labelsForm > div{
+      display:flex;
+      justify-content: center;;
+   }
+      #labelsForm label{
+         align-self: center;
+      cursor: pointer;
+      font-size: 26px;
+      text-align:center;
+      margin: 10px 1px;
+      line-height: 50px;
+   }
+}
+</style>

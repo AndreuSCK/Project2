@@ -91,12 +91,164 @@ router.post('/signup', async (req, res, next) => {
 
 
 router.get('/play', withAuth, (req, res, next) => {
+    let customData = req.cookies['customData'];
+    let userdata = req.cookies['userData'];
+
+    if (userdata) {
+        console.log("limpiar usedata")
+        res.clearCookie("userData");
+    }
+    if (customData) {
+        res.clearCookie("customData");
+    }
+
     if (res.locals.isUserLoggedIn) {
         res.render('play')
     } else {
         res.redirect('/');
     }
 })
+router.get('/customplay', withAuth, async (req, res, next) => {
+    if (!res.locals.isUserLoggedIn) {
+        res.redirect('/')
+    }
+    let customData = req.cookies['customData'];
+
+
+
+    if (customData) {
+        if (customData.currentQuestionNumber >= 10) {
+            res.redirect('/customresults')
+        }
+        console.log(customData.currentQuestionNumber)
+        // return res.send(username);
+        let jajapregunta = await CustomQuestions.find({ _id: JSON.parse(customData.questions)[customData.currentQuestionNumber] });
+        // console.log(jajapregunta)
+        res.locals.currentPregunta = `${jajapregunta[0].question}`
+        res.locals.currentRespuesta1 = `${jajapregunta[0].correct_answer}`
+
+        res.locals.currentRespuesta2 = `${jajapregunta[0].incorrect_answers[0]}`
+        res.locals.currentRespuesta3 = `${jajapregunta[0].incorrect_answers[1]}`
+        res.locals.currentRespuesta4 = `${jajapregunta[0].incorrect_answers[2]}`
+        res.render('playcustom')
+        // console.log(jajapregunta[0].question)
+        // console.log(jajapregunta[1].question)
+        // console.log(jajapregunta[2].question)
+        // console.log(jajapregunta[3].question)
+        // console.log(jajapregunta[4].question)
+        // console.log(jajapregunta[5].question)
+        // console.log(jajapregunta[6].question)
+        // console.log(jajapregunta[7].question)
+        // console.log(jajapregunta[8].question)
+        // console.log(jajapregunta[9].question)
+
+
+
+        // res.render('playcustom')
+    } else {
+
+        let mongoResponse = []
+        try {
+            mongoResponse = await CustomQuestions.find();
+        } catch (error) {
+            console.log(error)
+        }
+        // let mongoResponseLength = mongoResponse.length - 1
+        let arrayOfQuestionsID = []
+
+
+        try {
+            for (i = 0; i < 10; i++) {
+                // console.log(i)
+                let mongoResponseLength = mongoResponse.length - 1
+                let randomPosition = Math.round(Math.random() * mongoResponseLength)
+                // console.log(randomPosition)
+                arrayOfQuestionsID.push(await mongoResponse[randomPosition]._id)
+                mongoResponse.splice(randomPosition, 1)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+        let questionCookie = JSON.stringify(arrayOfQuestionsID)
+
+
+        // console.log(await questionCookie)
+
+        let customInfo = {
+            questions: questionCookie,
+            currentQuestionNumber: 0,
+            puntos: 0,
+        }
+        res.cookie("customData", customInfo);
+        res.redirect('/customplay')
+    }
+
+})
+
+router.post('/customplay', withAuth, async (req, res, next) => {
+    const { result } = req.body
+    let currentPuntos = 0
+    if (result === "win") {
+        currentPuntos = 1
+    }
+
+
+    let customData = req.cookies['customData'];
+
+
+
+    // console.log(customData.currentQuestionNumber)
+
+    let newCookies = {
+        questions: customData.questions,
+        currentQuestionNumber: customData.currentQuestionNumber + 1,
+        puntos: customData.puntos + currentPuntos
+    }
+
+    res.cookie("customData", newCookies);
+
+    if (newCookies.currentQuestionNumber >= JSON.parse(customData.questions).length) {
+        res.redirect('/customresults')
+    } else {
+        res.redirect('/customplay')
+    }
+
+})
+router.get('/customresults', withAuth, async (req, res, next) => {
+    if (!res.locals.isUserLoggedIn) {
+        res.redirect('/')
+    }
+
+    let customData = req.cookies['customData'];
+
+    if (customData) {
+        res.locals.resultsScore = customData.puntos
+        res.locals.resultsDifficulty = customData.difficulty
+        res.locals.resultsCategory = ""
+    }
+
+
+    res.clearCookie("customData");
+
+    res.render('customresults')
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 router.post('/play', withAuth, async (req, res, next) => {
 
     const { category, difficulty } = req.body
@@ -111,14 +263,14 @@ router.post('/play', withAuth, async (req, res, next) => {
     } catch (error) {
         console.log(error)
     }
-    let mongoResponseLength = mongoResponse.length - 1
 
     let arrayOfQuestions = []
     let arrayOfQuestionsID = []
 
     try {
         for (i = 0; i < 10; i++) {
-            console.log(i)
+            // console.log(i)
+            let mongoResponseLength = mongoResponse.length - 1
             let randomPosition = Math.round(Math.random() * mongoResponseLength)
 
             arrayOfQuestionsID.push(await mongoResponse[randomPosition]._id)
@@ -149,7 +301,9 @@ router.post('/play', withAuth, async (req, res, next) => {
 
 
 router.get('/letsplay', withAuth, async (req, res, next) => {
-
+    if (!res.locals.isUserLoggedIn) {
+        res.redirect('/')
+    }
 
     let userdata = req.cookies['userData'];
     if (userdata) {
@@ -198,7 +352,7 @@ router.post('/letsplay', withAuth, async (req, res, next) => {
     res.cookie("userData", newCookies);
 
     if (newCookies.currentQuestionNumber >= JSON.parse(userdata.questions).length) {
-        res.redirect('results')
+        res.redirect('/results')
     }
 
     if (userdata) {
@@ -258,7 +412,7 @@ router.post('/ranking', withAuth, async (req, res, next) => {
         }
         res.clearCookie("userData");
 
-        res.redirect('ranking/easy')
+        res.redirect('/ranking/easy')
 
 
     } else if (dificultad === "medium") {
@@ -283,7 +437,7 @@ router.post('/ranking', withAuth, async (req, res, next) => {
             )
         }
         res.clearCookie("userData");
-        res.redirect('ranking/medium')
+        res.redirect('/ranking/medium')
 
 
     } else if (dificultad === "hard") {
@@ -310,7 +464,7 @@ router.post('/ranking', withAuth, async (req, res, next) => {
         }
         res.clearCookie("userData");
 
-        res.redirect('ranking/hard')
+        res.redirect('/ranking/hard')
     } else {
         res.redirect('/')
     }
@@ -417,6 +571,9 @@ router.get('/ranking/:id', withAuth, async (req, res, next) => {
 
 
 router.get('/profile', withAuth, async (req, res, next) => {
+    if (!res.locals.isUserLoggedIn) {
+        res.redirect('/')
+    }
     const questionsCreatedByUser = await CustomQuestions.find({ author: res.locals.currentUserInfo._id });
     // console.log(questionsCreatedByUser)
 
@@ -447,6 +604,9 @@ router.get('/addquestion', withAuth, (req, res, next) => {
 
 
 router.get('/editquestion/:id', withAuth, async (req, res, next) => {
+    if (!res.locals.isUserLoggedIn) {
+        res.redirect('/')
+    }
     const singleQuestion = await CustomQuestions.findOne({ '_id': req.params.id })
 
     res.render('editquestion', { singleQuestion })
@@ -537,6 +697,17 @@ router.post('/login', async (req, res, next) => {
 
 
 router.get('/', withAuth, async function (req, res, next) {
+    let customData = req.cookies['customData'];
+    let userdata = req.cookies['userData'];
+
+
+    if (userdata) {
+        console.log("limpiar usedata")
+        res.clearCookie("userData");
+    }
+    if (customData) {
+        res.clearCookie("customData");
+    }
 
     if (res.locals.isUserLoggedIn) {
         res.render('home')
