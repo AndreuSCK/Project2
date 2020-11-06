@@ -1,4 +1,4 @@
-<main id="addquestionID">
+<main id="addquestionID" class="snip1217">
     <h1>Edit a Question</h1>
 {{#if errorMessage}}
 <p class="error-message">
@@ -24,8 +24,9 @@
         <label>incorrect Answer</label>
         <input name="incorrectAnswer3" placeholder="Definetely yes" value="{{singleQuestion.incorrect_answers.[2]}}">
 
-        
+
         <button id="boton" onclick="play()">Submit </button>
+
     </form>
     <button class="deletebttn">
             <a href="/deletequestion/{{singleQuestion._id}}" class="enlace" onclick="play()">

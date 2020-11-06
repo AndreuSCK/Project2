@@ -31,7 +31,7 @@ const withAuth = async (req, res, next) => {
         // if (error.name =  'TokenExpiredError') {
 
         // }
-        console.log(error);
+        // console.log(error);
         res.locals.isUserLoggedIn = false;
         // res.locals.message = "Token Expired"
         next();

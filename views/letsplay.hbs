@@ -1,22 +1,26 @@
 
+  <audio id="audioWin" src="images\mario-coin-sound.mp3"></audio>
+  <audio id="audioLose" src="images\smb_bowserfalls.wav"></audio>
 
+  
 
+ {{!-- onClick="() => audioWin.play()" --}}
 <main id="letsPlayID" class="snip1217">
 
         {{#if currentPregunta}}
             <h1 id="preguntaID">{{{currentPregunta}}}</h1>
             <div id="tablaPreguntasID">
 
-                <div id="p1" style="display: none;">
+                <div id="p1" style="display: none;" onclick="audioWin.play()">
                 <p>{{{currentRespuesta1}}}</p>
                  </div> 
-                 <div id="p2" style="display: none;">
+                 <div id="p2" style="display: none;" onclick="audioLose.play()">
                  <p >{{{currentRespuesta2}}}</p>
                  </div>
-                 <div id="p3" style="display: none;">
+                 <div id="p3" style="display: none;" onclick="audioLose.play()">
                  <p >{{{currentRespuesta3}}}</p>
                  </div>
-                 <div id="p4" style="display: none;">
+                 <div id="p4" style="display: none;" onclick="audioLose.play()">
                  <p >{{{currentRespuesta4}}}</p>
                 </div>
             </div>

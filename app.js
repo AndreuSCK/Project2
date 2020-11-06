@@ -15,7 +15,7 @@ const mongoose = require('mongoose');
 // `mongodb://localhost/project2`
 // process.env.MONGODB_URI
 mongoose
-  .connect(`mongodb://localhost/project2`, {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false

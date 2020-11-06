@@ -122,25 +122,20 @@ router.get('/customplay', withAuth, async (req, res, next) => {
         }
         console.log(customData.currentQuestionNumber)
         // return res.send(username);
-        let jajapregunta = await CustomQuestions.find({ _id: JSON.parse(customData.questions)[customData.currentQuestionNumber] });
-        // console.log(jajapregunta)
-        res.locals.currentPregunta = `${jajapregunta[0].question}`
-        res.locals.currentRespuesta1 = `${jajapregunta[0].correct_answer}`
+        try {
+            let jajapregunta = await CustomQuestions.find({ _id: JSON.parse(customData.questions)[customData.currentQuestionNumber] });
+            // console.log(jajapregunta)
+            res.locals.currentPregunta = `${jajapregunta[0].question}`
+            res.locals.currentRespuesta1 = `${jajapregunta[0].correct_answer}`
 
-        res.locals.currentRespuesta2 = `${jajapregunta[0].incorrect_answers[0]}`
-        res.locals.currentRespuesta3 = `${jajapregunta[0].incorrect_answers[1]}`
-        res.locals.currentRespuesta4 = `${jajapregunta[0].incorrect_answers[2]}`
-        res.render('playcustom')
-        // console.log(jajapregunta[0].question)
-        // console.log(jajapregunta[1].question)
-        // console.log(jajapregunta[2].question)
-        // console.log(jajapregunta[3].question)
-        // console.log(jajapregunta[4].question)
-        // console.log(jajapregunta[5].question)
-        // console.log(jajapregunta[6].question)
-        // console.log(jajapregunta[7].question)
-        // console.log(jajapregunta[8].question)
-        // console.log(jajapregunta[9].question)
+            res.locals.currentRespuesta2 = `${jajapregunta[0].incorrect_answers[0]}`
+            res.locals.currentRespuesta3 = `${jajapregunta[0].incorrect_answers[1]}`
+            res.locals.currentRespuesta4 = `${jajapregunta[0].incorrect_answers[2]}`
+            res.render('playcustom')
+
+        } catch (error) {
+            console.log(error)
+        }
 
 
 
