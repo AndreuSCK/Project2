@@ -17,7 +17,9 @@ const mongoose = require('mongoose');
 mongoose
   .connect(`mongodb://localhost/project2`, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
+
   })
   .then(x => {
     console.log(

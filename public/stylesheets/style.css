@@ -74,6 +74,7 @@ nav {
   padding:50px
 }
 .navname{
+  padding-right: 18px;
   font-size: 32px;
   font-weight: bold;
   color: black;
@@ -463,6 +464,7 @@ font-size: 50px;
 .nav-back{
 
   padding:15px;
+  padding-left: 0px;
 }
 .nav-profile{
   padding: 15px;

@@ -1,0 +1,69 @@
+<main id="scoreboardID">
+    <section id="scoreboardTitle">
+        <h1>Scoreboard</h1>
+    </section>
+<hr id="scoreboardHR1">
+
+<section id="scoreboardDifficulty">
+        {{#if rankEasy}}
+        <h1><a class="rankingActivada" href="/ranking/easy">Easy </a> | <a href="/ranking/medium">Medium </a> | <a href="/ranking/hard" >Hard</a></h1>
+        {{/if}}
+        {{#if rankMedium}}
+        <h1><a href="/ranking/easy">Easy </a> | <a class="rankingActivada" href="/ranking/medium">Medium </a> | <a href="/ranking/hard" >Hard</a></h1>
+        {{/if}}
+        {{#if rankHard}}
+        <h1><a href="/ranking/easy">Easy </a> | <a href="/ranking/medium">Medium </a> | <a class="rankingActivada" href="/ranking/hard" >Hard</a></h1>
+        {{/if}}
+
+</section>
+<section id="scoreboardGrid">
+    <div id="scoreboardGridUser">
+        <h1 class="scoreboardInfo" >Username</h1>
+        <h1 class="scoreboardInfo">Total Score</h1>
+        <h1 class="scoreboardInfo">Avg Right Questions%</h1>
+        {{#if arrayofNames.[0]}}
+        <h2>{{arrayofNames.[0]}}</h2>
+        <h2>{{arraytotalScore.[0]}} </h2>
+        <h2>{{arrayofAverage.[0]}}%</h2>
+        {{/if}}
+        {{#if arrayofNames.[1]}}
+        <h2>{{arrayofNames.[1]}}</h2>
+        <h2>{{arraytotalScore.[1]}} </h2>
+        <h2>{{arrayofAverage.[1]}}%</h2>
+        {{/if}}
+        {{#if arrayofNames.[2]}}
+        <h2>{{arrayofNames.[2]}}</h2>
+        <h2>{{arraytotalScore.[2]}} </h2>
+        <h2>{{arrayofAverage.[2]}}%</h2>
+        {{/if}}
+        {{#if arrayofNames.[3]}}
+        <h2>{{arrayofNames.[3]}}</h2>
+        <h2>{{arraytotalScore.[3]}} </h2>
+        <h2>{{arrayofAverage.[3]}}%</h2>
+        {{/if}}
+        {{#if arrayofNames.[4]}}
+        <h2>{{arrayofNames.[4]}}</h2>
+        <h2>{{arraytotalScore.[4]}} </h2>
+        <h2>{{arrayofAverage.[4]}}%</h2>
+        {{/if}}
+        {{#if arrayofNames.[5]}}
+        <h2>{{arrayofNames.[5]}}</h2>
+        <h2>{{arraytotalScore.[5]}} </h2>
+        <h2>{{arrayofAverage.[5]}}%</h2>
+        {{/if}}
+        {{#if arrayofNames.[6]}}
+        <h2>{{arrayofNames.[6]}}</h2>
+        <h2>{{arraytotalScore.[6]}} </h2>
+        <h2>{{arrayofAverage.[6]}}%</h2>
+        {{/if}}
+
+        
+
+
+        
+    
+    </div>
+</section>
+
+
+</main>

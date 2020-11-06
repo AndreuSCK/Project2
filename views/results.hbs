@@ -1,1 +1,28 @@
-<h1>resultados</h1>
+<main id="resultsID">
+
+    <section id="resultsGreatPlay">
+        <h1>Great Play {{currentUserInfo.name}}!</h1>
+    </section>
+<hr id="resultsHR1">
+
+    <section id="resultsScore">
+        <h1>{{resultsScore}}<span>/10</span>  </h1>
+    </section>
+
+    <section id="resultsCategoryMode">
+        <h1>Difficulty: {{resultsDifficulty}}</h1>
+        <h1>Category: {{resultsCategory}}</h1>
+    </section>
+    <section id="resultsLinks">
+        <div class="snip1217" class="popover">
+        <form action="/ranking" method="post">
+            <button id="resultBotonForm" onclick="play()" >Share your score!</button>
+        </form>
+        {{!-- <a href="/ranking" class="enlace" onclick="play()" type="post">Share your score</a> --}}
+        <a href="/play" class="enlace" onclick="play()">Play again</a>
+        <a href="/ranking" class="enlace" onclick="play()">Ranking</a>
+        </div>
+
+    </section>
+
+</main>

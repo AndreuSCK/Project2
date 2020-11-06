@@ -11,6 +11,11 @@ const User = require('../models/user')
 const DBQuestions = require('../models/dbquestions')
 const CustomQuestions = require('../models/custom-questions')
 
+const RankingModelEasy = require('../models/rankingEasy')
+const RankingModelMedium = require('../models/rankingMedium')
+const RankingModelHard = require('../models/rankingHard')
+
+
 
 
 const bcrypt = require("bcryptjs");
@@ -94,8 +99,8 @@ router.get('/play', withAuth, (req, res, next) => {
 })
 router.post('/play', withAuth, async (req, res, next) => {
 
-    const { category, difficulty} = req.body
-    const settings = {category, difficulty}
+    const { category, difficulty } = req.body
+    const settings = { category, difficulty }
     let mongoResponse = []
     try {
         if (category === "all") {
@@ -117,6 +122,7 @@ router.post('/play', withAuth, async (req, res, next) => {
             let randomPosition = Math.round(Math.random() * mongoResponseLength)
 
             arrayOfQuestionsID.push(await mongoResponse[randomPosition]._id)
+            mongoResponse.splice(randomPosition, 1)
         }
     } catch (error) {
         console.log(error)
@@ -130,6 +136,8 @@ router.post('/play', withAuth, async (req, res, next) => {
         questions: questionCookie,
         currentQuestionNumber: 0,
         puntos: 0,
+        category: category,
+        difficulty: difficulty
     }
     res.cookie("userData", playerInfo);
 
@@ -170,7 +178,7 @@ router.post('/letsplay', withAuth, async (req, res, next) => {
     const { result } = req.body
     let currentPuntos = 0
     if (result === "win") {
-        currentPuntos = 50
+        currentPuntos = 1
     }
 
 
@@ -184,6 +192,8 @@ router.post('/letsplay', withAuth, async (req, res, next) => {
         questions: userdata.questions,
         currentQuestionNumber: userdata.currentQuestionNumber + 1,
         puntos: userdata.puntos + currentPuntos,
+        category: userdata.category,
+        difficulty: userdata.difficulty
     }
     res.cookie("userData", newCookies);
 
@@ -205,8 +215,207 @@ router.post('/letsplay', withAuth, async (req, res, next) => {
 })
 
 router.get('/results', withAuth, async (req, res, next) => {
+    let userdata = req.cookies['userData'];
+    if (userdata) {
+        res.locals.resultsScore = userdata.puntos
+        res.locals.resultsDifficulty = userdata.difficulty
+        res.locals.resultsCategory = userdata.category
+    }
+
+
+
     res.render('results')
 })
+router.post('/ranking', withAuth, async (req, res, next) => {
+
+    console.log("enviando datos")
+    let userdata = req.cookies['userData'];
+
+    let puntosUserData = userdata.puntos
+    let dificultad = userdata.difficulty
+    let author = res.locals.currentUserInfo._id
+    console.log(res.locals.currentUserInfo._id)
+
+    console.log(dificultad)
+    if (dificultad === "easy") {
+        const userRank = await RankingModelEasy.findOne({ 'author': author })
+        if (!userRank) {
+            RankingModelEasy.create({
+                author: author,
+                numberOfGames: 1,
+                totalScore: puntosUserData
+            })
+        } else {
+            const puntosActualizados = Number(userRank.totalScore + puntosUserData)
+            await RankingModelEasy.findOneAndUpdate(
+                { author: author },
+                {
+                    numberOfGames: userRank.numberOfGames + 1,
+                    totalScore: puntosActualizados
+                }
+
+            )
+        }
+        res.clearCookie("userData");
+
+        res.redirect('ranking/easy')
+
+
+    } else if (dificultad === "medium") {
+
+
+        const userRank = await RankingModelMedium.findOne({ 'author': author })
+        if (!userRank) {
+            RankingModelMedium.create({
+                author: author,
+                numberOfGames: 1,
+                totalScore: puntosUserData
+            })
+        } else {
+            const puntosActualizados = Number(userRank.totalScore + puntosUserData)
+            await RankingModelMedium.findOneAndUpdate(
+                { author: author },
+                {
+                    numberOfGames: userRank.numberOfGames + 1,
+                    totalScore: puntosActualizados
+                }
+
+            )
+        }
+        res.clearCookie("userData");
+        res.redirect('ranking/medium')
+
+
+    } else if (dificultad === "hard") {
+
+
+
+        const userRank = await RankingModelHard.findOne({ 'author': author })
+        if (!userRank) {
+            RankingModelHard.create({
+                author: author,
+                numberOfGames: 1,
+                totalScore: puntosUserData
+            })
+        } else {
+            const puntosActualizados = Number(userRank.totalScore + puntosUserData)
+            await RankingModelHard.findOneAndUpdate(
+                { author: author },
+                {
+                    numberOfGames: userRank.numberOfGames + 1,
+                    totalScore: puntosActualizados
+                }
+
+            )
+        }
+        res.clearCookie("userData");
+
+        res.redirect('ranking/hard')
+    } else {
+        res.redirect('/')
+    }
+
+
+
+
+
+
+
+
+
+
+})
+
+
+router.get('/ranking', withAuth, async (req, res, next) => {
+    res.redirect('/ranking/hard')
+})
+
+
+router.get('/ranking/:id', withAuth, async (req, res, next) => {
+    if (req.params.id) {
+        difficulty = req.params.id
+    }
+
+    if (difficulty === "easy") {
+        const rankEasy = await RankingModelEasy.find().sort({ totalScore: -1 });
+        console.log(rankEasy)
+        res.locals.rankEasy = true
+
+
+        // const rankEasy = await RankingModelEasy.find().sort({ totalScore: -1 });
+        let arrayofNames = []
+        let arraytotalScore = []
+        let arrayofAverage = []
+        console.log(rankEasy)
+        for (i = 0; i < rankEasy.length; i++) {
+            let cacheUser = await User.findOne({ '_id': rankEasy[i].author }).select("-password");
+            arrayofNames.push(cacheUser.name)
+            arraytotalScore.push(rankEasy[i].totalScore)
+            // console.log(cacheUser.name)
+            arrayofAverage.push((rankEasy[i].totalScore / rankEasy[i].numberOfGames).toFixed(1) * 10)
+        }
+        res.locals.arrayofNames = arrayofNames
+        res.locals.arraytotalScore = arraytotalScore
+        res.locals.arrayofAverage = arrayofAverage
+
+        res.render('ranking')
+    } else if (difficulty === "medium") {
+        const rankMedium = await RankingModelMedium.find().sort({ totalScore: -1 });
+        res.locals.rankMedium = true
+
+
+        // const rankMedium = await RankingModelMedium.find().sort({ totalScore: -1 });
+        let arrayofNames = []
+        let arraytotalScore = []
+        let arrayofAverage = []
+        console.log(rankMedium)
+        for (i = 0; i < rankMedium.length; i++) {
+            let cacheUser = await User.findOne({ '_id': rankMedium[i].author }).select("-password");
+            arrayofNames.push(cacheUser.name)
+            arraytotalScore.push(rankMedium[i].totalScore)
+            // console.log(cacheUser.name)
+            arrayofAverage.push((rankMedium[i].totalScore / rankMedium[i].numberOfGames).toFixed(1) * 10)
+        }
+        res.locals.arrayofNames = arrayofNames
+        res.locals.arraytotalScore = arraytotalScore
+        res.locals.arrayofAverage = arrayofAverage
+
+        res.render('ranking')
+    } else {
+        res.locals.rankHard = true
+
+        const rankHard = await RankingModelHard.find().sort({ totalScore: -1 });
+        let arrayofNames = []
+        let arraytotalScore = []
+        let arrayofAverage = []
+        console.log(rankHard)
+        for (i = 0; i < rankHard.length; i++) {
+            let cacheUser = await User.findOne({ '_id': rankHard[i].author }).select("-password");
+            arrayofNames.push(cacheUser.name)
+            arraytotalScore.push(rankHard[i].totalScore)
+            // console.log(cacheUser.name)
+            arrayofAverage.push((rankHard[i].totalScore / rankHard[i].numberOfGames).toFixed(1) * 10)
+        }
+        res.locals.arrayofNames = arrayofNames
+        res.locals.arraytotalScore = arraytotalScore
+        res.locals.arrayofAverage = arrayofAverage
+
+        res.render('ranking')
+
+    }
+
+
+
+})
+
+
+
+
+
+
+
+
 router.get('/profile', withAuth, async (req, res, next) => {
     const questionsCreatedByUser = await CustomQuestions.find({ author: res.locals.currentUserInfo._id });
     // console.log(questionsCreatedByUser)
@@ -304,7 +513,7 @@ router.post('/login', async (req, res, next) => {
             const payload = { userID: userWithoutPass._id };
             // creamos el token usando el método sign, el string de secret session y el expiring time
             const token = jwt.sign(payload, process.env.SECRET_SESSION, {
-                expiresIn: "2h",
+                expiresIn: "200h",
             });
             // enviamos en la respuesta una cookie con el token y luego redirigimos a la home
             res.cookie("token", token, { httpOnly: true });
